@@ -9,7 +9,7 @@ Kiwi is a very simple and opinionated Key-Value database.
    ```yaml
    dependencies:
      kiwi:
-       github: your-github-user/kiwi
+       github: dillonfagan/kiwi
    ```
 
 2. Run `shards install`
