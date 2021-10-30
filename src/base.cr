@@ -2,7 +2,18 @@ require "./store"
 
 module Kiwi
   class Base
-    getter stores = Hash(String, Store).new
+    @stores = Hash(String, Store).new
+
+    def stores : Array(Store)
+      return @stores.values
+    end
+
+    def has_store?(name : String) : Bool
+      assert_has(name)
+      return true
+    rescue
+      return false
+    end
 
     def store(name : String) : Store
       assert_has(name)
