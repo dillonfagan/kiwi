@@ -27,7 +27,7 @@ describe Kiwi::Store do
     store.get(id).should eq("DKK")
   end
 
-  it "raises an IDException with #patch if the ID does not exist" do
+  it "raises a StoreException with #patch if the ID does not exist" do
     store = Kiwi::Store.new("anything")
 
     expect_raises(Kiwi::StoreException, "Invalid ID") do
@@ -41,6 +41,14 @@ describe Kiwi::Store do
     store.patch(id, "black")
 
     store.get(id).should eq("black")
+  end
+
+  it "raises a StoreException if #delete takes ID that does not exist" do
+    store = Kiwi::Store.new("anything")
+
+    expect_raises(Kiwi::StoreException, "Invalid ID") do
+      store.delete(Kiwi::ID.new)
+    end
   end
 
   it "deletes an entry with #delete" do

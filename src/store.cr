@@ -29,6 +29,7 @@ module Kiwi
     end
 
     def delete(id : ID)
+      raise Kiwi::StoreException.new("Invalid ID") if !@data.has_key?(id.to_s)
       @data.delete(id.to_s)
     end
   end
