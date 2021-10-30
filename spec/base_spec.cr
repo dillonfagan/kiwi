@@ -19,10 +19,18 @@ describe Kiwi::Base do
     end
 
     describe "#store" do
+        it "raises BaseException, given invalid store name" do
+            base = Kiwi::Base.new
+
+            expect_raises(Kiwi::BaseException, "Invalid store name") do
+                base.store("nothing")
+            end
+        end
+
         it "retrieves an existing store" do
             base = Kiwi::Base.new
             base.create("houses")
-            
+
             base.store("houses").should_not be_nil
         end
     end
