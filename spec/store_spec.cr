@@ -25,7 +25,15 @@ describe Kiwi::Store do
     store = Kiwi::Store.new("colors")
     id = store.push("orange")
     store.patch(id, "black")
-    
+
     store.get(id).should eq("black")
+  end
+
+  it "deletes an entry with #delete" do
+    store = Kiwi::Store.new("countries")
+    id = store.push("Estonia")
+    store.delete(id)
+
+    store.get(id).should be_nil
   end
 end

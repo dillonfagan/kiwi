@@ -11,8 +11,10 @@ module Kiwi
     def initialize(@name : String)
     end
 
-    def get(id : ID) : String
+    def get(id : ID) : String?
       return @data[id.to_s]
+    rescue
+      return nil
     end
 
     def push(value : String) : ID
@@ -23,6 +25,10 @@ module Kiwi
 
     def patch(id : ID, value : String)
       @data[id.to_s] = value
+    end
+
+    def delete(id : ID)
+      @data.delete(id.to_s)
     end
   end
 end
