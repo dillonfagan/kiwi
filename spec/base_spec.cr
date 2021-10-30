@@ -1,20 +1,29 @@
 require "./spec_helper"
 
 describe Kiwi::Base do
-    it "is empty when initialized" do
-        base = Kiwi::Base.new
-        base.stores.empty?.should be_true
+    describe "#new" do
+        it "is empty when new" do
+            base = Kiwi::Base.new
+
+            base.stores.empty?.should be_true
+        end
     end
 
-    it "is not empty after creating a store" do
-        base = Kiwi::Base.new
-        base.create("cities")
-        base.stores.empty?.should be_false
+    describe "#create" do
+        it "is not empty after creating a store" do
+            base = Kiwi::Base.new
+            base.create("cities")
+
+            base.stores.empty?.should be_false
+        end
     end
 
-    it "retrieves an existing store" do
-        base = Kiwi::Base.new
-        base.create("houses")
-        base.store("houses").should_not be_nil
+    describe "#store" do
+        it "retrieves an existing store" do
+            base = Kiwi::Base.new
+            base.create("houses")
+            
+            base.store("houses").should_not be_nil
+        end
     end
 end
