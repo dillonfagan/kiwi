@@ -11,10 +11,9 @@ module Kiwi
     def initialize(@name : String)
     end
 
-    def get(id : ID) : String?
+    def get(id : ID) : String
+      assert_has(id)
       return @data[id.to_s]
-    rescue
-      return nil
     end
 
     def push(value : String) : ID

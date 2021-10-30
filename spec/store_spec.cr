@@ -14,10 +14,12 @@ describe Kiwi::Store do
     id.should_not be_nil
   end
 
-  it "returns nil if the ID does not exist" do
+  it "raises StoreException with #get if the ID does not exist" do
     store = Kiwi::Store.new("empty")
 
-    store.get(Kiwi::ID.new).should be_nil
+    expect_raises(Kiwi::StoreException, "Invalid ID") do
+      store.get(Kiwi::ID.new)
+    end
   end
 
   it "returns the entry's value with #get" do
@@ -56,6 +58,8 @@ describe Kiwi::Store do
     id = store.push("Estonia")
     store.delete(id)
 
-    store.get(id).should be_nil
+    expect_raises(Kiwi::StoreException, "Invalid ID") do
+      store.get(id)
+    end
   end
 end
