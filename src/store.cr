@@ -24,13 +24,17 @@ module Kiwi
     end
 
     def patch(id : ID, value : String)
-      raise Kiwi::StoreException.new("Invalid ID") if !@data.has_key?(id.to_s)
+      assert_has(id)
       @data[id.to_s] = value
     end
 
     def delete(id : ID)
-      raise Kiwi::StoreException.new("Invalid ID") if !@data.has_key?(id.to_s)
+      assert_has(id)
       @data.delete(id.to_s)
+    end
+
+    private def assert_has(id : ID)
+      raise Kiwi::StoreException.new("Invalid ID") if !@data.has_key?(id.to_s)
     end
   end
 end
