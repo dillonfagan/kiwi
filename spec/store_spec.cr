@@ -3,7 +3,7 @@ require "./spec_helper"
 describe Kiwi::Store do
   describe "#new" do
     it "sets the name" do
-      store = Kiwi::Store.new("flavors")
+      store = Kiwi::BasicStore.new("flavors")
 
       store.name.should eq("flavors")
     end
@@ -11,7 +11,7 @@ describe Kiwi::Store do
 
   describe "#put" do
     it "returns a summary with the value" do
-      store = Kiwi::Store.new("airlines")
+      store = Kiwi::BasicStore.new("airlines")
       summary = store.put("PanAm")
 
       summary.body.should eq("PanAm")
@@ -20,7 +20,7 @@ describe Kiwi::Store do
 
   describe "#get" do
     it "raises StoreException, given invalid ID" do
-      store = Kiwi::Store.new("empty")
+      store = Kiwi::BasicStore.new("empty")
 
       expect_raises(Kiwi::StoreException, "Invalid ID") do
         store.get(Kiwi::ID.new)
@@ -28,7 +28,7 @@ describe Kiwi::Store do
     end
 
     it "returns an entry's value" do
-      store = Kiwi::Store.new("currencies")
+      store = Kiwi::BasicStore.new("currencies")
       summary = store.put("DKK")
 
       store.get(summary.id).body.should eq("DKK")
@@ -37,7 +37,7 @@ describe Kiwi::Store do
 
   describe "#patch" do
     it "raises StoreException, given invalid ID" do
-      store = Kiwi::Store.new("anything")
+      store = Kiwi::BasicStore.new("anything")
 
       expect_raises(Kiwi::StoreException, "Invalid ID") do
         store.patch(Kiwi::ID.new, "value")
@@ -45,7 +45,7 @@ describe Kiwi::Store do
     end
 
     it "updates an entry's value" do
-      store = Kiwi::Store.new("colors")
+      store = Kiwi::BasicStore.new("colors")
       summary = store.put("orange")
       store.patch(summary.id, "black")
 
@@ -55,7 +55,7 @@ describe Kiwi::Store do
 
   describe "#delete" do
     it "raises StoreException, given invalid ID" do
-      store = Kiwi::Store.new("anything")
+      store = Kiwi::BasicStore.new("anything")
 
       expect_raises(Kiwi::StoreException, "Invalid ID") do
         store.delete(Kiwi::ID.new)
@@ -63,7 +63,7 @@ describe Kiwi::Store do
     end
 
     it "deletes an entry" do
-      store = Kiwi::Store.new("countries")
+      store = Kiwi::BasicStore.new("countries")
       summary = store.put("Estonia")
       store.delete(summary.id)
 

@@ -26,7 +26,7 @@ module Kiwi
 
     def create(name : String)
       assert_new(name)
-      @stores[name] = Store.new(name)
+      @stores[name] = BasicStore.new(name)
     end
 
     private def assert_new(name : String)

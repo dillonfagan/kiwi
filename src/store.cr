@@ -3,7 +3,15 @@ require "./id"
 require "./entry"
 
 module Kiwi
-  class Store
+  abstract class Store
+    abstract def name : String
+    abstract def get(id : ID) : EntrySummary
+    abstract def put(value : String) : EntrySummary
+    abstract def patch(id : ID, value : String) : EntrySummary
+    abstract def delete(id : ID) : EntrySummary
+  end
+
+  class BasicStore < Store
     include JSON::Serializable
 
     @data = Hash(ID, Entry).new
