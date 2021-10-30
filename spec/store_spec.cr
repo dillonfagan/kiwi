@@ -72,4 +72,13 @@ describe Kiwi::Store do
       end
     end
   end
+
+  describe "#dump" do
+    it "returns with json" do
+      store = Kiwi::BasicStore.new("cities")
+      dump = store.dump
+
+      dump.json.should eq("{\"name\":\"cities\",\"data\":{}}")
+    end
+  end
 end

@@ -1,8 +1,10 @@
 require "time"
+require "json"
 require "./header"
 
 module Kiwi
   class Entry
+    include JSON::Serializable
     getter header : Header
     property body : String
 

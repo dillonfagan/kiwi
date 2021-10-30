@@ -9,6 +9,14 @@ module Kiwi
     abstract def put(value : String) : EntrySummary
     abstract def patch(id : ID, value : String) : EntrySummary
     abstract def delete(id : ID) : EntrySummary
+    abstract def dump : StoreDump
+  end
+
+  struct StoreDump
+    getter json : String
+
+    def initialize(@json : String)
+    end
   end
 
   class BasicStore < Store
@@ -48,6 +56,10 @@ module Kiwi
 
     private def assert_has(id : ID)
       raise Kiwi::StoreException.new("Invalid ID") if !@data.has_key?(id)
+    end
+
+    def dump : StoreDump
+      return StoreDump.new(to_json)
     end
   end
 end

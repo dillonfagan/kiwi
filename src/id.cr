@@ -16,5 +16,9 @@ module Kiwi
     def to_s
       return @value
     end
+
+    def to_json_object_key
+      return @value
+    end
   end
 end
