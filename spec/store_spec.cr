@@ -14,7 +14,13 @@ describe Kiwi::Store do
     id.should_not be_nil
   end
 
-  it "returns the entry's value, given its ID" do
+  it "returns nil if the id does not exist" do
+    store = Kiwi::Store.new("empty")
+
+    store.get(Kiwi::ID.new).should be_nil
+  end
+
+  it "returns the entry's value with #get" do
     store = Kiwi::Store.new("currencies")
     id = store.push("DKK")
 
