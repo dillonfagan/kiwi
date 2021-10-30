@@ -14,7 +14,7 @@ describe Kiwi::Store do
     id.should_not be_nil
   end
 
-  it "returns nil if the id does not exist" do
+  it "returns nil if the ID does not exist" do
     store = Kiwi::Store.new("empty")
 
     store.get(Kiwi::ID.new).should be_nil
@@ -25,6 +25,14 @@ describe Kiwi::Store do
     id = store.push("DKK")
 
     store.get(id).should eq("DKK")
+  end
+
+  it "raises an IDException with #patch if the ID does not exist" do
+    store = Kiwi::Store.new("anything")
+
+    expect_raises(Kiwi::StoreException, "Invalid ID") do
+      store.patch(Kiwi::ID.new, "value")
+    end
   end
 
   it "updates an entry's value with #patch" do

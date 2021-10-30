@@ -24,6 +24,7 @@ module Kiwi
     end
 
     def patch(id : ID, value : String)
+      raise Kiwi::StoreException.new("Invalid ID") if !@data.has_key?(id.to_s)
       @data[id.to_s] = value
     end
 
