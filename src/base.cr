@@ -21,5 +21,10 @@ module Kiwi
     private def assert_new(name : String)
       raise Kiwi::BaseException.new("Store [ #{name} ] already exists") if @stores.has_key?(name)
     end
+
+    def destroy(name : String)
+      assert_has(name)
+      @stores.delete(name)
+    end
   end
 end

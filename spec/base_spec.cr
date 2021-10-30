@@ -43,4 +43,22 @@ describe Kiwi::Base do
             base.store("houses").should_not be_nil
         end
     end
+
+    describe "#destroy" do
+        it "raises BaseException, given invalid store name" do
+            base = Kiwi::Base.new
+
+            expect_raises(Kiwi::BaseException, "Invalid store name") do
+                base.destroy("nothing")
+            end
+        end
+
+        it "destroys an existing store" do
+            base = Kiwi::Base.new
+            base.create("store")
+            base.destroy("store")
+
+            base.stores.has_key?("store").should be_false
+        end
+    end
 end
