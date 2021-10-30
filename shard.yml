@@ -1,0 +1,9 @@
+name: kiwi
+version: 0.1.0
+
+authors:
+  - Dillon Fagan <dillonfagan@pm.me>
+
+crystal: 1.1.1
+
+license: LGPL-2.1
