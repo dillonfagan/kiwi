@@ -25,14 +25,17 @@ module Kiwi
       return EntrySummary.new(id, entry)
     end
 
-    def patch(id : ID, value : String)
+    def patch(id : ID, value : String) : EntrySummary
       assert_has(id)
       @data[id].body = value
+      return EntrySummary.new(id, @data[id])
     end
 
-    def delete(id : ID)
+    def delete(id : ID) : EntrySummary
       assert_has(id)
+      entry = @data[id]
       @data.delete(id)
+      return EntrySummary.new(id, entry)
     end
 
     private def assert_has(id : ID)
