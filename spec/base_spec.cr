@@ -68,5 +68,12 @@ describe Kiwi::Base do
 
       base.stores.empty?.should be_true
     end
+
+    it "returns an Array with one Store" do
+      base = Kiwi::Base.new
+      base.create("store")
+
+      base.stores.size.should eq(1)
+    end
   end
 end
