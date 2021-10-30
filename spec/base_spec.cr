@@ -91,4 +91,14 @@ describe Kiwi::Base do
       base.has?("store").should be_true
     end
   end
+
+  # describe "#save" do
+  #   it "saves file to disk" do
+  #     base = Kiwi::Base.new
+  #     base.create("colors")
+  #     base.store("colors").put("orange")
+  #     base.store("colors").put("maroon")
+  #     base.save("/Users/<user>/Downloads")
+  #   end
+  # end
 end

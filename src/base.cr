@@ -1,3 +1,4 @@
+require "file"
 require "./store"
 
 module Kiwi
@@ -36,6 +37,10 @@ module Kiwi
     def destroy(name : String)
       assert_has(name)
       @stores.delete(name)
+    end
+
+    def save(folder : String)
+      File.write(Path.posix(folder, "base.kiwi"), @stores.to_json)
     end
   end
 end
