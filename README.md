@@ -1,6 +1,6 @@
-# kiwi
+# Kiwi
 
-TODO: Write a description here
+Kiwi is a very simple and opinionated Key-Value database.
 
 ## Installation
 
@@ -19,12 +19,6 @@ TODO: Write a description here
 ```crystal
 require "kiwi"
 ```
-
-TODO: Write usage instructions here
-
-## Development
-
-TODO: Write development instructions here
 
 ## Contributing
 
