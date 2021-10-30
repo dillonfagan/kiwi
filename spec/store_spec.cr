@@ -10,7 +10,7 @@ describe Kiwi::Store do
   end
 
   describe "#put" do
-    it "returns an ID" do
+    it "returns a summary with the value" do
       store = Kiwi::Store.new("airlines")
       summary = store.put("PanAm")
 
