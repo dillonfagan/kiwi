@@ -1,6 +1,6 @@
 name: kiwi
 description: A very simple and opinionated Key-Value database.
-version: 0.2.0
+version: 0.4.0
 
 authors:
   - Dillon Fagan <dillonfagan@pm.me>
