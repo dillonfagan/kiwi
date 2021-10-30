@@ -8,7 +8,7 @@ module Kiwi
       return @stores.values
     end
 
-    def has_store?(name : String) : Bool
+    def has?(name : String) : Bool
       assert_has(name)
       return true
     rescue

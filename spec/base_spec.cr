@@ -58,7 +58,7 @@ describe Kiwi::Base do
       base.create("store")
       base.destroy("store")
 
-      base.has_store?("store").should be_false
+      base.has?("store").should be_false
     end
   end
 
@@ -77,18 +77,18 @@ describe Kiwi::Base do
     end
   end
 
-  describe "#has_store?" do
+  describe "#has?" do
     it "returns false" do
       base = Kiwi::Base.new
       
-      base.has_store?("store").should be_false
+      base.has?("store").should be_false
     end
 
     it "returns true" do
       base = Kiwi::Base.new
       base.create("store")
 
-      base.has_store?("store").should be_true
+      base.has?("store").should be_true
     end
   end
 end
