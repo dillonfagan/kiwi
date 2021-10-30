@@ -16,7 +16,7 @@ module Kiwi
       return @data[id.to_s]
     end
 
-    def push(value : String) : ID
+    def put(value : String) : ID
       id = ID.new
       @data[id.to_s] = value
       return id
