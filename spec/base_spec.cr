@@ -16,6 +16,15 @@ describe Kiwi::Base do
 
             base.stores.empty?.should be_false
         end
+
+        it "raises BaseException, given existing store name" do
+            base = Kiwi::Base.new
+            base.create("store")
+            
+            expect_raises(Kiwi::BaseException, "Store [ store ] already exists") do
+                base.create("store")
+            end
+        end
     end
 
     describe "#store" do

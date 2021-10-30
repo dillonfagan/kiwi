@@ -9,12 +9,17 @@ module Kiwi
       @stores[name]
     end
 
+    private def assert_has(name : String)
+      raise Kiwi::BaseException.new("Invalid store name") if !@stores.has_key?(name)
+    end
+
     def create(name : String)
+      assert_new(name)
       @stores[name] = Store.new(name)
     end
 
-    private def assert_has(name : String)
-      raise Kiwi::BaseException.new("Invalid store name") if !@stores.has_key?(name)
+    private def assert_new(name : String)
+      raise Kiwi::BaseException.new("Store [ #{name} ] already exists") if @stores.has_key?(name)
     end
   end
 end
