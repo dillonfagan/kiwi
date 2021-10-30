@@ -12,9 +12,10 @@ module Kiwi
     def initialize(@name : String)
     end
 
-    def get(id : ID) : String
+    def get(id : ID) : EntrySummary
       assert_has(id)
-      return @data[id].body
+      entry = @data[id]
+      return EntrySummary.new(entry)
     end
 
     def put(value : String) : ID

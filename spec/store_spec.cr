@@ -31,7 +31,7 @@ describe Kiwi::Store do
       store = Kiwi::Store.new("currencies")
       id = store.put("DKK")
 
-      store.get(id).should eq("DKK")
+      store.get(id).body.should eq("DKK")
     end
   end
 
@@ -49,7 +49,7 @@ describe Kiwi::Store do
       id = store.put("orange")
       store.patch(id, "black")
 
-      store.get(id).should eq("black")
+      store.get(id).body.should eq("black")
     end
   end
 

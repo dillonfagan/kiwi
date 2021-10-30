@@ -10,4 +10,14 @@ module Kiwi
       @header = Header.new
     end
   end
+
+  struct EntrySummary
+    getter header : Header
+    getter body : String
+
+    def initialize(entry : Entry)
+      @header = entry.header
+      @body = entry.body
+    end
+  end
 end
