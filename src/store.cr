@@ -15,13 +15,14 @@ module Kiwi
     def get(id : ID) : EntrySummary
       assert_has(id)
       entry = @data[id]
-      return EntrySummary.new(entry)
+      return EntrySummary.new(id, entry)
     end
 
-    def put(value : String) : ID
+    def put(value : String) : EntrySummary
       id = ID.new
-      @data[id] = Entry.new(value)
-      return id
+      entry = Entry.new(value)
+      @data[id] = entry
+      return EntrySummary.new(id, entry)
     end
 
     def patch(id : ID, value : String)

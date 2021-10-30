@@ -12,10 +12,11 @@ module Kiwi
   end
 
   struct EntrySummary
+    getter id : ID
     getter header : Header
     getter body : String
 
-    def initialize(entry : Entry)
+    def initialize(@id : ID, entry : Entry)
       @header = entry.header
       @body = entry.body
     end

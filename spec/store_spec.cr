@@ -12,9 +12,9 @@ describe Kiwi::Store do
   describe "#put" do
     it "returns an ID" do
       store = Kiwi::Store.new("airlines")
-      id = store.put("PanAm")
+      summary = store.put("PanAm")
 
-      id.should_not be_nil
+      summary.body.should eq("PanAm")
     end
   end
 
@@ -29,9 +29,9 @@ describe Kiwi::Store do
 
     it "returns an entry's value" do
       store = Kiwi::Store.new("currencies")
-      id = store.put("DKK")
+      summary = store.put("DKK")
 
-      store.get(id).body.should eq("DKK")
+      store.get(summary.id).body.should eq("DKK")
     end
   end
 
@@ -46,10 +46,10 @@ describe Kiwi::Store do
 
     it "updates an entry's value" do
       store = Kiwi::Store.new("colors")
-      id = store.put("orange")
-      store.patch(id, "black")
+      summary = store.put("orange")
+      store.patch(summary.id, "black")
 
-      store.get(id).body.should eq("black")
+      store.get(summary.id).body.should eq("black")
     end
   end
 
@@ -64,11 +64,11 @@ describe Kiwi::Store do
 
     it "deletes an entry" do
       store = Kiwi::Store.new("countries")
-      id = store.put("Estonia")
-      store.delete(id)
+      summary = store.put("Estonia")
+      store.delete(summary.id)
 
       expect_raises(Kiwi::StoreException, "Invalid ID") do
-        store.get(id)
+        store.get(summary.id)
       end
     end
   end
