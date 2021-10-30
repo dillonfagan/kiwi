@@ -5,5 +5,5 @@ require "./store"
 require "./store_exception"
 
 module Kiwi
-    VERSION = "0.4.0"
+    VERSION = "0.4.1"
 end

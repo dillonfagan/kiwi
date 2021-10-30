@@ -1,7 +1,9 @@
 require "uuid"
+require "json"
 
 module Kiwi
   struct ID
+    include JSON::Serializable
     @value : String
 
     def initialize
